@@ -1,3 +1,9 @@
+<?php
+    session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +53,18 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="investments.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Investments</span></a>
+            </li>
+
+            <!-- Nav Item -- Contacts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="blank.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Contacts</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -83,7 +101,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Investments:</h6>
-                        <a class="collapse-item" href="investments.html">Investments</a>
+                        <a class="collapse-item" href="investments.php">Investments</a>
                     </div>
                 </div>
             </li>
@@ -336,7 +354,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?$_SESSION['username']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['fname'] . " " . $_SESSION['lname']?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
