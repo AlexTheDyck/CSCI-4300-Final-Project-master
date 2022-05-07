@@ -8,7 +8,7 @@ var ctx = document.getElementById("Aggresive");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: ["Stocks/Etfs", "Bonds", "Cash"],
     datasets: [{
       data: [80, 20, 0],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
