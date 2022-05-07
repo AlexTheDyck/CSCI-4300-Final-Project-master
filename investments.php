@@ -68,65 +68,6 @@ include "connect.php";
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Investments Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Investments</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Investments:</h6>
-                        <a class="collapse-item" href="investments.php">Investments</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -145,20 +86,6 @@ include "connect.php";
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->
@@ -385,30 +312,12 @@ include "connect.php";
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Investments</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$<?php
                                                                                                 $sql = "SELECT totalAmount FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
                                                                                                 $query = mysqli_query($conn, $sql);
                                                                                                 $result = mysqli_fetch_assoc($query);
                                                                                                 echo $result["totalAmount"];
                                                                                                 ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Change (1d)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">+10%</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -451,6 +360,29 @@ include "connect.php";
                             </div>
                         </div>
 
+                        <!-- Balance -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Current Balance</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$<?php
+                                                                                                    $sql = "SELECT balance FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
+                                                                                                    $query = mysqli_query($conn, $sql);
+                                                                                                    $result = mysqli_fetch_assoc($query);
+                                                                                                    echo $result["balance"];
+                                                                                                    ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Change Investment Portfolio -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
@@ -465,9 +397,10 @@ include "connect.php";
                                                                                                 $result = mysqli_fetch_assoc($query);
                                                                                                 echo $result["investmentType"];
                                                                                                 ?></div>
+                                            <br>
                                             <div class="dropdown mb-4">
                                                 <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Portfolio Type
+                                                    Change Portfolio Type
                                                 </button>
                                                 <form action="pie.php" method="POST" class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
                                                     <button type="submit" class="btn btn-primary btn-user btn-block" name="agg">Aggresive</a>
@@ -494,7 +427,7 @@ include "connect.php";
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Investment Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Returns</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -511,7 +444,12 @@ include "connect.php";
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <canvas id="<?php
+                                                    $sql = "SELECT investmentType FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
+                                                    $query = mysqli_query($conn, $sql);
+                                                    $result = mysqli_fetch_assoc($query);
+                                                    echo $result["investmentType"];
+                                                    ?>Line"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -570,7 +508,7 @@ include "connect.php";
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                            <span>Final Project</span>
                         </div>
                     </div>
                 </footer>
@@ -620,7 +558,9 @@ include "connect.php";
         <script src="vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-area-agg.js"></script>
+        <script src="js/demo/chart-area-aggcopy2.js"></script>
+        <script src="js/demo/chart-area-aggcopy3.js"></script>
         <script src="js/demo/chart-pie-agg.js"></script>
         <script src="js/demo/chart-pie-cons.js"></script>
         <script src="js/demo/chart-pie-mod.js"></script>

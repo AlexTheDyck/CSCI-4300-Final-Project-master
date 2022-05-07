@@ -12,11 +12,12 @@
     $lname = filter_input(INPUT_POST, 'lname');
     $totalAmount = 0;
     $investmentType = "None";
-    $dayChange = 0;
+    $balance = 0;
+    $earnings = 0;
     $sql="INSERT INTO logininfo (fname, lname, userPassword, userEmail)
         VALUES ($fname, $lname, $pass, $email)";
-    $sql2="INSERT INTO investments (userEmail, totalAmount, investmentType, dayChange)
-        VALUES ($email, $totalAmount, $investmentType, $dayChange)";
+    $sql2="INSERT INTO investments (userEmail, totalAmount, investmentType, balance, earnings)
+        VALUES ($email, $totalAmount, $investmentType, $dayChange, $balance, $earnings)";
     if ($email == null || $pass == null || $fname == null || $lname == null) {
     $error = "Invalid product data. Check all fields and try 
     again. Make sure that NO fields are NULL and that the product code is UNIQUE.";
@@ -27,8 +28,8 @@
         $query = 'INSERT INTO `logininfo` (`fname`, `lname`, `userPassword`, `userEmail`)
 	    VALUES
 	    (:fname, :lname, :userPassword, :userEmail)';
-        $query2="INSERT INTO investments (userEmail, totalAmount, investmentType, dayChange)
-            VALUES (:userEmail, :totalAmount, :investmentType, :dayChange)";
+        $query2="INSERT INTO investments (userEmail, totalAmount, investmentType, balance, earnings)
+            VALUES (:userEmail, :totalAmount, :investmentType, :balance, :earnings)";
 	    $statement = $db->prepare($query);
         $statement->bindValue(':fname', $fname);
         $statement->bindValue(':lname', $lname);
@@ -42,6 +43,8 @@
         $statement2->bindValue(':totalAmount', $totalAmount);
         $statement2->bindValue(':investmentType', $investmentType);
         $statement2->bindValue(':dayChange', $dayChange);
+        $statement2->bindValue(':balance', $balance);
+        $statement2->bindValue(':earnings', $earnings);
         $statement2->execute();
         $statement2->closeCursor();
 
