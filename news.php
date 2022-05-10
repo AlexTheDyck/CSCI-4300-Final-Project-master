@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "connect.php";
-if(!isset($_SESSION['userEmail'])){ //if login in session is not set
+if (!isset($_SESSION['userEmail'])) { //if login in session is not set
     header("Location: login.php");
 }
 ?>
@@ -65,6 +65,7 @@ if(!isset($_SESSION['userEmail'])){ //if login in session is not set
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Contacts</span></a>
             </li>
+
             <!-- Nav Item -- News -->
             <li class="nav-item active">
                 <a class="nav-link" href="news.php">
@@ -81,7 +82,7 @@ if(!isset($_SESSION['userEmail'])){ //if login in session is not set
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
@@ -304,36 +305,11 @@ if(!isset($_SESSION['userEmail'])){ //if login in session is not set
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1 class="h3 mb-4 text-gray-800">Contact</h1>
+                    <h1 class="h3 mb-4 text-gray-800">News</h1>
+                    <div class="News">
 
-
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-auto">
-                            <p class="lead text-gray-800 mb-5">Nick Severson</p>
-                            <img src="img\NickContact.jpg" style="width:300px; height:400px;">
-                            <p class="text-gray-600 mb-0"><br>Web Page Developer<br>Email: nms95312@uga.edu</p>
-                        </div>
-
-                        <br><br>
-                        <div class="col-auto">
-                            <p class="lead text-gray-800 mb-5">Nidhi Dahiya</p>
-                            <img src="img\NidhiContact.jpg" style="width:300px;height:400px;">
-                            <p class="text-gray-600 mb-0"><br>Web Page Developer<br>Email: nsd67657@uga.edu</p>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-auto">
-                            <p class="lead text-gray-800 mb-5">Kyla Edwards</p>
-                            <img src="img\KylaContact.jpg" style="width:300px;">
-                            <p class="text-gray-600 mb-0"><br>Web Page Developer<br>Email: kce77931@uga.edu</p>
-                        </div>
-                        <div class="col-auto">
-                            <p class="lead text-gray-800 mb-5">Alexander Dyck</p>
-                            <img src="img\AlexContact.png" style="width:300px;height:400px;">
-                            <p class="text-gray-600 mb-0"><br>Web Page Developer<br>Email: amd1@uga.edu</p>
-                        </div>
+                        <rssapp-wall id="KVuWcf9sX5Z2qsrI"></rssapp-wall>
+                        <script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
                     </div>
                 </div>
                 <!-- /.container-fluid -->

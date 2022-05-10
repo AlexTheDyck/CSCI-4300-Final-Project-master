@@ -1,6 +1,10 @@
 <?php
 session_start();
 include "connect.php";
+
+if (!isset($_SESSION['userEmail'])) { //if login in session is not set
+    header("Location: login.php");
+}
 ?>
 
 
@@ -65,6 +69,12 @@ include "connect.php";
                     <span>Contacts</span></a>
             </li>
 
+            <!-- Nav Item -- News -->
+            <li class="nav-item active">
+                <a class="nav-link" href="news.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>News</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -320,7 +330,7 @@ include "connect.php";
                                                                                                     $sql = "SELECT earnings FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
                                                                                                     $query = mysqli_query($conn, $sql);
                                                                                                     $result = mysqli_fetch_assoc($query);
-                                                                                                    echo $result["earnings"];
+                                                                                                    echo number_format($result["earnings"], 2, '.', ',');;
                                                                                                     ?></div>
                                         </div>
                                         <div class="col-auto">
@@ -376,7 +386,7 @@ include "connect.php";
                                                                                                     $sql = "SELECT balance FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
                                                                                                     $query = mysqli_query($conn, $sql);
                                                                                                     $result = mysqli_fetch_assoc($query);
-                                                                                                    echo $result["balance"];
+                                                                                                    echo number_format($result["balance"], 2, '.', ',');;
                                                                                                     ?></div>
                                         </div>
                                         <div class="col-auto">
@@ -425,7 +435,7 @@ include "connect.php";
                         <div class="row">
 
                             <!-- Area Chart -->
-                            <div class="col-xl-8 col-lg-7">
+                            <div class="col-xl-12 col-lg-7">
                                 <div class="card shadow mb-4">
                                     <!-- Card Header - Dropdown -->
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -457,9 +467,7 @@ include "connect.php";
                                 </div>
                             </div>
 
-                            <!-- Pie Chart -->
-                            <div class="col-xl-4 col-lg-5">
-                                <!-- News -->
+                            <!-- <div class="col-xl-4 col-lg-5">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">News</h6>
@@ -475,6 +483,35 @@ include "connect.php";
                                         <a target="_blank" rel="nofollow" href="https://www.bloomberg.com/news/articles/2022-05-06/bitcoin-testing-of-lows-has-traders-wary-of-break-below-32-000?srnd=premium">
                                             &rarr; Bitcoin’s Testing of Lows Has Traders Wary of a Break Below $32,000<br> </a>
                                     </div>
+                                </div>
+                            </div> -->
+                            <!-- News -->
+                            <div class="col-xl-12 col-lg-7">
+                                <div class="card shadow mb-4">
+                                    <!-- Card Header - Dropdown -->
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">News</h6>
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">Dropdown Header:</div>
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div style="overflow-y: scroll; height:400px;">
+                                            <rssapp-wall id="KVuWcf9sX5Z2qsrI"></rssapp-wall>
+                                            <script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="window.location.href='news.php'">News Page</button>
                                 </div>
                             </div>
 
@@ -520,7 +557,7 @@ include "connect.php";
                                     <!-- Illustrations -->
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">What is Stonks?</h6>
                                         </div>
                                         <div class="card-body">
                                             <div class="text-center">

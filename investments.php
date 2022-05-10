@@ -1,6 +1,9 @@
 <?php
 session_start();
 include "connect.php";
+if (!isset($_SESSION['userEmail'])) { //if login in session is not set
+    header("Location: login.php");
+}
 ?>
 
 
@@ -63,6 +66,13 @@ include "connect.php";
                 <a class="nav-link" href="blank.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Contacts</span></a>
+            </li>
+
+            <!-- Nav Item -- News -->
+            <li class="nav-item active">
+                <a class="nav-link" href="news.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>News</span></a>
             </li>
 
             <!-- Divider -->
@@ -313,11 +323,11 @@ include "connect.php";
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Investments</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$<?php
-                                                                                                $sql = "SELECT totalAmount FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
-                                                                                                $query = mysqli_query($conn, $sql);
-                                                                                                $result = mysqli_fetch_assoc($query);
-                                                                                                echo $result["totalAmount"];
-                                                                                                ?></div>
+                                                                                                    $sql = "SELECT totalAmount FROM investments WHERE userEmail = '" . $_SESSION['userEmail'] . "'";
+                                                                                                    $query = mysqli_query($conn, $sql);
+                                                                                                    $result = mysqli_fetch_assoc($query);
+                                                                                                    echo number_format($result["totalAmount"], 2, '.', ',');
+                                                                                                    ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
